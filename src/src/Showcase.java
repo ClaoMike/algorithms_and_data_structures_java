@@ -31,4 +31,13 @@ public class Showcase {
         System.out.println("Random number's position: ");
         System.out.println(randomItemPosition);
     }
+
+    public static void selectionSort() {
+        int[] array = {28, 89, 33, 94, 93, 71, 20, 95, 11, 15, 58, 16, 9, 26, 2, 37, 69, 36, 52, 32};
+
+        int[] sortedArray = SelectionSort.selectionSort(array);
+
+        Helpers.printArray(array);
+        Helpers.printArray(sortedArray);
+    }
 }

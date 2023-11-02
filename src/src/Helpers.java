@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Helpers {
+
     public static void printArray(int[] array) {
         System.out.println();
         System.out.print("Array >> ");
@@ -33,4 +34,5 @@ public class Helpers {
 
         return converted;
     }
+    
 }

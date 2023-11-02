@@ -19,7 +19,7 @@ public class SelectionSort {
         return Helpers.convertArrayListToArrayOfInt(newArrayList);
     }
 
-    public static Integer findSmallest(ArrayList<Integer> array){
+    private static Integer findSmallest(ArrayList<Integer> array){
         Integer smallest = array.get(0);
         Integer smallestIndex = 0;
 

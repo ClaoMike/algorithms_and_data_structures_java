@@ -9,10 +9,6 @@ public class SumElementsOfAnArrayRecursive {
             return 0;
         }
 
-        if(array.length == 1){
-            return array[0];
-        }
-
         return arrayList.remove(0) + sum(Helpers.convertArrayListToArrayOfInt(arrayList));
     }
 

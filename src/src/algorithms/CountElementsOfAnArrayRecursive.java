@@ -9,6 +9,8 @@ public class CountElementsOfAnArrayRecursive {
             return 0;
         }
 
+        arrayList.remove(0);
+
         return 1 + count(Helpers.convertArrayListToArrayOfInt(arrayList));
     }
 

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class App {
     public static void main(String[] args) throws Exception {
         Helpers.clearConsole();
@@ -7,21 +5,12 @@ public class App {
         // Showcase.binarySearch();
         // Showcase.selectionSort();
         // Showcase.factorial();
+        // Showcase.quickSort();
+        // Showcase.mergeSort();
+        // Showcase.countArrayRecursive();
+        // Showcase.euclid();
+        // Showcase.sumArrayRecursive();
+        // Showcase.maxArrayRecursive();
         
-        ArrayList<Integer> test = new ArrayList<>();
-        test.add(1);
-        test.add(5);
-        test.add(4);
-        test.add(6);
-        test.add(9);
-        test.add(2);
-        test.add(89);
-        test.add(-2);
-        test.add(-70);
-
-        // ArrayList<Integer> result = MergeSort.mergeSort(test);
-        ArrayList<Integer> result = QuickSort.quickSort(test);
-
-        System.out.println(result);
     }
 }

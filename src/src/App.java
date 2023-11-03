@@ -5,7 +5,7 @@ public class App {
         // Showcase.binarySearch();
         // Showcase.selectionSort();
         // Showcase.factorial();
-        // Showcase.quickSort();
+        Showcase.quickSort();
         // Showcase.mergeSort();
         // Showcase.countArrayRecursive();
         // Showcase.euclid();

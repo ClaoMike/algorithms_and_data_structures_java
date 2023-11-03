@@ -4,8 +4,7 @@ public class App {
 
         // Showcase.binarySearch();
         // Showcase.selectionSort();
-
-        System.out.println(Factorial.factorial(5));
+        // Showcase.factorial();
         
     }
 }

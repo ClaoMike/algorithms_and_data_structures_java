@@ -40,4 +40,8 @@ public class Showcase {
         Helpers.printArray(array);
         Helpers.printArray(sortedArray);
     }
+
+    public static void factorial() {
+        System.out.println(Factorial.factorial(5));
+    }
 }

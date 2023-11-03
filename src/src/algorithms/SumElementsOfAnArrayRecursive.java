@@ -3,11 +3,7 @@ import java.util.ArrayList;
 public class SumElementsOfAnArrayRecursive {
     
     public static int sum(int[] array) {
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
-
-        for(int i = 0; i<array.length; i++) {
-            arrayList.add(Integer.valueOf(array[i]));
-        }
+        ArrayList<Integer> arrayList = Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(array);
 
         if(array.length == 0) {
             return 0;
@@ -19,4 +15,5 @@ public class SumElementsOfAnArrayRecursive {
 
         return arrayList.remove(0) + sum(Helpers.convertArrayListToArrayOfInt(arrayList));
     }
+
 }

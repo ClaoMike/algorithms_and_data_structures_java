@@ -3,12 +3,8 @@ import java.util.ArrayList;
 public class SelectionSort {
 
     public static int[] selectionSort(int[] array) {
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        ArrayList<Integer> arrayList = Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(array);
         ArrayList<Integer> newArrayList = new ArrayList<Integer>();
-        
-        for(int i = 0; i<array.length; i++) {
-            arrayList.add(Integer.valueOf(array[i]));
-        }
 
         for (int i=0; i<array.length; i++) {
             Integer smallestIndex = findSmallest(arrayList);

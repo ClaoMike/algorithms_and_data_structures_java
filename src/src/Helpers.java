@@ -34,5 +34,15 @@ public class Helpers {
 
         return converted;
     }
+
+    public static ArrayList<Integer> convertArrayOfPrimitiveIntToArrayListOfIntegers(int[] array) {
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+
+        for(int i = 0; i<array.length; i++) {
+            arrayList.add(Integer.valueOf(array[i]));
+        }
+
+        return arrayList;
+    }
     
 }

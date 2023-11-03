@@ -19,7 +19,9 @@ public class App {
         test.add(-2);
         test.add(-70);
 
-        ArrayList<Integer> result = MergeSort.mergeSort(test);
+        // ArrayList<Integer> result = MergeSort.mergeSort(test);
+        ArrayList<Integer> result = QuickSort.quickSort(test);
+
         System.out.println(result);
     }
 }

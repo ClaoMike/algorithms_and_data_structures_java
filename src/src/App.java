@@ -1,3 +1,5 @@
+import hash_tables.HashTable;
+
 public class App {
     public static void main(String[] args) throws Exception {
         Helpers.clearConsole();

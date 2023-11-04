@@ -1,3 +1,5 @@
+package hash_tables;
+
 public class HashTable {
     public class KVP {
         String K;
@@ -45,7 +47,6 @@ public class HashTable {
         else {
             return table[searchIndex];
         }
-        
     }
 
     public void insert(String key, Integer value) {

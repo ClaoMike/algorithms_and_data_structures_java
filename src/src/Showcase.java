@@ -132,4 +132,8 @@ public class Showcase {
         System.out.println(MaxNumberInAnArrayRecursive.max(array));
     }
 
+    public static void hashTable() {
+        // TODO
+    }
+
 }

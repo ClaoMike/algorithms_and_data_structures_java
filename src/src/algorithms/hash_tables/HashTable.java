@@ -1,7 +1,8 @@
 package hash_tables;
 
 public class HashTable {
-
+    
+    // object to hold a key value pair, can also be used to create a linked list
     public class KVP {
         String KEY;
         Integer VALUE;
@@ -39,24 +40,28 @@ public class HashTable {
     }
 
     public boolean insert(String key, Integer value) {
-        KVP alreadyHere = search(key);
+        // see if it alreadt exist, so you do not add duplicates
+        KVP alreadyHere = search(key); 
 
         if(alreadyHere != null) {
             return false;
         }
 
+        // if it's not a duplicate, then it counts
         UNAVAILABLE_SLOTS++;
 
+        // before adding, see if the table needs to extended, so it does not exceed the optimal load factor - usually 0.7
         float loadFactor = calculateLoadFactor();
 
         if(loadFactor >= LOAD_FACTOR_THRESHOLD_UPPER_BOUND) {
             resize(Resize.INCREASE);
         }
 
-        // add new pair to the table and update the number of occupied slots
+        // add new pair to the table
         KVP newPair = new KVP(key, value);
         int hashValue = calculateHashValue(key, table.length);
 
+        // if there is a collision, add it to the end of the linked list
         if(table[hashValue] != null) {
             KVP lastLink = table[hashValue];
 

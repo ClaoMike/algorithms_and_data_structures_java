@@ -24,48 +24,8 @@ public class App {
         // }
 
         for(int i=0; i < 10; i++) {
-            sut.insert(reader.getData().get(i), price++);
+            sut.insert(reader.getData().get(0), price++);
         }
-
-        // sut.printAllPairs();
-
-        for(int i=10; i < 20; i++) {
-            sut.insert(reader.getData().get(i), price++);
-        }
-
-        // sut.printAllPairs();
-
-        for(int i=20; i < 30; i++) {
-            sut.insert(reader.getData().get(i), price++);
-        }
-
-        // sut.printAllPairs();
-
-        for(int i=30; i < 40; i++) {
-            sut.insert(reader.getData().get(i), price++);
-        }
-
-        // sut.printAllPairs();
-
-        for(int i=40; i < 50; i++) {
-            sut.insert(reader.getData().get(i), price++);
-        }
-
-        sut.printAllPairs();
-
-        System.out.println(sut.search("Apple").getKey());
-
-        System.out.println(sut.delete("Apple"));
-
-        System.out.println(sut.delete("Apple"));
-
-        sut.printAllPairs();
-
-        System.out.println(sut.delete("Black sapote"));
-
-        sut.printAllPairs();
-
-        System.out.println(sut.delete("Goji berry"));
 
         sut.printAllPairs();
 

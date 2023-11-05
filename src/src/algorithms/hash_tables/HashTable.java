@@ -38,7 +38,12 @@ public class HashTable {
         table = new KVP[originalSize]; // all entries are null
     }
 
-    public void insert(String key, Integer value) {
+    public boolean insert(String key, Integer value) {
+        KVP alreadyHere = search(key);
+        if(alreadyHere != null) {
+            return false;
+        }
+
         float loadFactor = calculateLoadFactor();
 
         if(loadFactor >= LOAD_FACTOR_THRESHOLD_UPPER_BOUND) {
@@ -63,6 +68,8 @@ public class HashTable {
             table[hashValue] = newPair;
             UNAVAILABLE_SLOTS++;
         }
+
+        return true;
     }
 
     public KVP search(String key) {

@@ -50,7 +50,7 @@ public class HashTable {
         int hashValue = calculateHashValue(key, table.length);
 
         if(table[hashValue] != null) {
-            System.out.println("collision");
+            // System.out.println("collision");
             KVP lastLink = table[hashValue];
             while (lastLink.kid != null) {
                 lastLink = lastLink.kid;
@@ -83,7 +83,7 @@ public class HashTable {
                 else {
                     lastLink = lastLink.kid;
                 }
-            }while(lastLink.kid != null);
+            } while(lastLink != null);
 
             return null;
         }
@@ -99,11 +99,15 @@ public class HashTable {
 
         if(toBeDeleted.parent == toBeDeleted) {
             UNAVAILABLE_SLOTS--;
+            table[calculateHashValue(key, table.length)] = toBeDeleted.kid;
         }
+        else {
+            toBeDeleted.parent.kid = toBeDeleted.kid;
 
-        toBeDeleted.parent.kid = toBeDeleted.kid;
-        toBeDeleted.kid.parent = toBeDeleted.parent;
-        toBeDeleted = null;
+            if(toBeDeleted.kid != null) {
+                toBeDeleted.kid.parent = toBeDeleted.parent;
+            }
+        }
 
         System.out.println(key + " deleted!");
 
@@ -126,15 +130,39 @@ public class HashTable {
         }
         
         // no need to copy the null entries :)
-        for(KVP p: table) {
-            if(p != null) {
-                // TODO: update this
-                int newHashValue = calculateHashValue(p.KEY, newTable.length);
-                newTable[newHashValue] = p; 
+        for(KVP entry: table) {
+            if(entry != null) {
+                KVP current = entry;
+                while (current != null) {
+                    KVP copy = new KVP(current.KEY, current.VALUE);
+                    int newHashValue = calculateHashValue(copy.KEY, newTable.length);
+
+                    if(newTable[newHashValue] != null) {
+                        KVP lastLink = newTable[newHashValue];
+                        while (lastLink.kid != null) {
+                            lastLink = lastLink.kid;
+                        }
+                        lastLink.kid = copy;
+                        copy.parent = lastLink;
+                    }
+                    else {
+                        copy.parent = copy;
+                        newTable[newHashValue] = copy;
+                    }
+
+                    current = current.kid;
+                }
             }
         }
 
         table = newTable;
+
+        UNAVAILABLE_SLOTS = 0;
+        for(KVP entry: table) {
+            if(entry != null){
+                UNAVAILABLE_SLOTS++;
+            }
+        }
     }
 
     private float calculateLoadFactor() {

@@ -1,6 +1,9 @@
 import java.lang.Integer;
 import java.util.ArrayList;
 
+import hash_tables.HashTable;
+import hash_tables.HashTable.KVP;
+
 public class Showcase {
     private static int size = 89;
     private static int min = -100;
@@ -133,7 +136,57 @@ public class Showcase {
     }
 
     public static void hashTable() {
-        // TODO
+        TextFileReader reader = new TextFileReader(Constants.fruitsFilePath);
+        ArrayList<String> fruits = reader.getData();
+        HashTable table = new HashTable();
+        int price = 5;
+        String fruit = "Papaya";
+        String fakeFruit = "This is not a fruit";
+        KVP item;
+
+        System.out.println("--> Populating the hash table");
+        for(String s: fruits) {
+            table.insert(s, price++);
+        }
+
+        table.printAllPairs(false);
+        
+        System.out.println("--> Search for " + fruit);
+        item = table.search(fruit);
+        System.out.println("Key: " + item.getKey() + ", value: " + item.getValue());
+
+        System.out.println("--> Search for " + fakeFruit);
+        item = table.search(fakeFruit);
+        System.out.println(item);
+
+        System.out.println("--> Delete " + fruit);
+        table.delete(fruit);
+        table.printAllPairs(false);
+
+        System.out.println("--> Delete " + fakeFruit);
+        System.out.println("Found: " + table.delete(fakeFruit));
+
+        System.out.println("--> Insert " + fruit + " again");
+        System.out.println(table.insert(fruit, 89));
+        table.printAllPairs(false);
+
+        System.out.println("--> Try to insert " + fruit + " again, as a duplicate");
+        System.out.println(table.insert(fruit, 89));
+        table.printAllPairs(false);
+
+        System.out.println("--> Depopulate half of the table ");
+        for(int i=0 ;i < fruits.size()/2; i++) {
+            table.delete(fruits.get(i));
+        }
+        table.printAllPairs(true);
+
+        System.out.println("--> Empty the hash table");
+
+        for(String s:fruits) {
+            table.delete(s);
+        }
+
+        table.printAllPairs(true);
     }
 
 }

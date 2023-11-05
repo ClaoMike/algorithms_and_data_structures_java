@@ -70,7 +70,6 @@ public class HashTable {
         else {
             newPair.parent = newPair;
             table[hashValue] = newPair;
-            // UNAVAILABLE_SLOTS++;
         }
 
         return true;
@@ -177,13 +176,6 @@ public class HashTable {
         }
 
         table = newTable;
-
-        // UNAVAILABLE_SLOTS = 0;
-        // for(KVP entry: table) {
-        //     if(entry != null){
-        //         UNAVAILABLE_SLOTS++;
-        //     }
-        // }
     }
 
     private float calculateLoadFactor() {
@@ -202,16 +194,18 @@ public class HashTable {
         return UNAVAILABLE_SLOTS;
     }
 
-    public void printAllPairs() {
+    public void printAllPairs(boolean showEmptyEntries) {
         System.out.println("< =========================================== >");
 
         for(int i = 0; i < table.length; i++) {
-            System.out.print(i + ". ");
-
             if(table[i] == null){
-                System.out.println("EMPTY SLOT");
+                if(showEmptyEntries){
+                    System.out.print(i + ". ");
+                    System.out.println("EMPTY SLOT");
+                }
             }
             else {
+                System.out.print(i + ". ");
                 KVP slot = table[i];
 
                 do {

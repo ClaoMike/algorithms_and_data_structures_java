@@ -67,7 +67,7 @@ public class HashTable {
         
         // if the key is not stored, return false
         if(table[keyHashValue] == null) {
-            return false;
+            return false; // TODO: fix this so the tests pass
         }
 
         // otherwise, delete it and update the number of occupied slots

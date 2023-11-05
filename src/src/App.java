@@ -14,9 +14,9 @@ public class App {
         // Showcase.sumArrayRecursive();
         // Showcase.maxArrayRecursive();
 
-        // String path = "/Users/claomike/Desktop/Projects/algorithms_and_data_structures_java/src/resources/text_files/fruits.txt";
-        // TextFileReader reader = new TextFileReader(path);
-        // // reader.printDataRowByRow();
+        String path = "/Users/claomike/Desktop/Projects/algorithms_and_data_structures_java/src/resources/text_files/fruits.txt";
+        TextFileReader reader = new TextFileReader(path);
+        // reader.printDataRowByRow();
 
         // for(String s: reader.getData()){
         //     System.out.println(s + " -> " + String.valueOf(HashFunctions.divisionMethod(HashFunctions.polynomialRolling(s), 5)) + ";");

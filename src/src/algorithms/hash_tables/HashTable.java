@@ -58,7 +58,11 @@ public class HashTable {
 
         // add new pair to the table and update the number of occupied slots
         KVP newPair = new KVP(key, value);
-        table[calculateHashValue(key, table.length)] = newPair;
+        int hashValue = calculateHashValue(key, table.length);
+        if(table[hashValue] != null) {
+            System.out.println("collision");
+        }
+        table[hashValue] = newPair;
         UNAVAILABLE_SLOTS++;
     }
 
@@ -67,7 +71,9 @@ public class HashTable {
         
         // if the key is not stored, return false
         if(table[keyHashValue] == null) {
+            // System.out.println("Deletion failed");
             return false; // TODO: fix this so the tests pass
+            
         }
 
         // otherwise, delete it and update the number of occupied slots
@@ -75,11 +81,21 @@ public class HashTable {
         UNAVAILABLE_SLOTS--;
 
         float loadFactor = calculateLoadFactor();
+        // System.out.println("---------------------------------------");
+        // System.out.println("Occupied slots: " + UNAVAILABLE_SLOTS);
+        // System.out.println("Load factor: " + loadFactor);
+        // System.out.println("---------------------------------------");
 
         if(loadFactor < LOAD_FACTOR_THRESHOLD_LOWER_BOUND && table.length/2 >= originalSize) {
+            // System.out.println(" ====================================== ");
+            // System.out.print("Decreasing from " + table.length + " to ");
             resize(Resize.DECREASE);
+            // System.out.println(table.length);
+            // System.out.println("Occupied slots: " + UNAVAILABLE_SLOTS);
+            // System.out.println(" ====================================== ");
         }
 
+        // System.out.println("Deletion succeded");
         return true;
     }
 
@@ -117,6 +133,14 @@ public class HashTable {
 
     public int getOccupiedSlots() {
         return UNAVAILABLE_SLOTS;
+    }
+
+    public void printAllPairs() {
+        for(KVP p: table) {
+            if(p != null){
+                System.out.println("Key: " + p.getKey() + ", value: " + p.getValue());
+            }
+        }
     }
 
 }

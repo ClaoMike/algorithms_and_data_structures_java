@@ -172,12 +172,13 @@ public class HashTable {
         // no need to copy the null entries :)
         for(KVP entry: table) {
             if(entry != null) {
-                KVP current = entry;
 
-                while (current != null) {
-                    KVP copy = new KVP(current.KEY, current.VALUE);
+                while (entry != null) {
+                    // make a copy, and get it hash value for the new table
+                    KVP copy = new KVP(entry.KEY, entry.VALUE);
                     int newHashValue = calculateHashValue(copy.KEY, newTable.length);
 
+                    // if there is a linked list in the new hash table, add it at the end
                     if(newTable[newHashValue] != null) {
                         KVP lastLink = newTable[newHashValue];
 
@@ -188,12 +189,14 @@ public class HashTable {
                         lastLink.kid = copy;
                         copy.parent = lastLink;
                     }
+                    // otherwise, it is the first one to be added there, again, it becomes its own parent
                     else {
                         copy.parent = copy;
                         newTable[newHashValue] = copy;
                     }
-
-                    current = current.kid;
+                    
+                    // this was just a copy, now its time to move to the next kid
+                    entry = entry.kid;
                 }
             }
         }
@@ -206,6 +209,7 @@ public class HashTable {
     }
 
     private int calculateHashValue(String key, int size) {
+        // one hash function to get from a mString to int, another one to get from an int to an int that fits the table size
         return HashFunctions.divisionMethod(HashFunctions.polynomialRolling(key), size);
     }
 

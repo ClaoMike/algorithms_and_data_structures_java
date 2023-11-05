@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class HashTableTest {
@@ -55,6 +56,7 @@ public class HashTableTest {
         String item = "Surinam cherry";
 
         assertTrue(sut.delete(item));
+        assertNull(sut.search(item));
     }
 
     @Test

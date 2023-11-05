@@ -19,19 +19,27 @@ public class App {
         HashTable sut = new HashTable();
         int price = 5;
 
-        for(String s: reader.getData()) {
-            sut.insert(s, price++);
-        }
-        System.out.println("->>>>" + sut.getTableSize());
-        System.out.println("->>>>>" + sut.getOccupiedSlots());
+        // for(String s: reader.getData()) {
+        //     sut.insert(s, price++);
+        // }
 
-        for(String s: reader.getData()) {
-            sut.delete(s);
+        for(int i=0; i< 9; i++) {
+            sut.insert(reader.getData().get(i), price++);
         }
-        System.out.println("->>>>" + sut.getTableSize());
-        System.out.println("->>>>>" + sut.getOccupiedSlots());
 
-        // sut.printAllPairs();clear
-        // System.out.println(reader.getData().size());
+        sut.printAllPairs();
+
+        System.out.println(sut.search("Apple").getKey());
+
+        System.out.println(sut.delete("Apple"));
+
+        sut.printAllPairs();
+
+        System.out.println(sut.delete("Apple"));
+
+        sut.printAllPairs();
+
+        System.out.println(sut.delete("Apple"));
+
     }
 }

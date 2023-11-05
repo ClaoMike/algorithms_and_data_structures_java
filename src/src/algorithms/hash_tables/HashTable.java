@@ -2,20 +2,22 @@ package hash_tables;
 
 public class HashTable {
     public class KVP {
-        String K;
-        Integer V;
+        String KEY;
+        Integer VALUE;
+        KVP kid;
+        KVP parent;
 
         public KVP(String key, Integer value){
-            this.K = key;
-            this.V = value;
+            this.KEY = key;
+            this.VALUE = value;
         }
 
         public String getKey() {
-            return K;
+            return KEY;
         }
 
         public Integer getValue() {
-            return V;
+            return VALUE;
         }
     }
 
@@ -30,23 +32,10 @@ public class HashTable {
     private int UNAVAILABLE_SLOTS = 0;
 
     private KVP[] table;
+    //TODO: do not allow for duplicates!
 
     public HashTable() {
         table = new KVP[originalSize]; // all entries are null
-    }
-
-    public KVP search(String key) {
-        // calculate index using the hash function
-        int searchIndex = calculateHashValue(key, table.length);
-
-        // if the value is null, meas it's not there, return null
-        if(table[searchIndex] == null) {
-            return null;
-        }
-        // otherwise, it's there, return the pair
-        else {
-            return table[searchIndex];
-        }
     }
 
     public void insert(String key, Integer value) {
@@ -59,43 +48,71 @@ public class HashTable {
         // add new pair to the table and update the number of occupied slots
         KVP newPair = new KVP(key, value);
         int hashValue = calculateHashValue(key, table.length);
+
         if(table[hashValue] != null) {
             System.out.println("collision");
+            KVP lastLink = table[hashValue];
+            while (lastLink.kid != null) {
+                lastLink = lastLink.kid;
+            }
+            lastLink.kid = newPair;
+            newPair.parent = lastLink;
         }
-        table[hashValue] = newPair;
-        UNAVAILABLE_SLOTS++;
+        else {
+            newPair.parent = newPair;
+            table[hashValue] = newPair;
+            UNAVAILABLE_SLOTS++;
+        }
+    }
+
+    public KVP search(String key) {
+        // calculate index using the hash function
+        int searchIndex = calculateHashValue(key, table.length);
+
+        // if the value is null, means it's not there, return null
+        if(table[searchIndex] == null) {
+            return null;
+        }
+        // otherwise, it's there, return the pair
+        else {
+            KVP lastLink = table[searchIndex];
+            do {
+                if(lastLink.KEY.equals(key)) {
+                    return lastLink;
+                } 
+                else {
+                    lastLink = lastLink.kid;
+                }
+            }while(lastLink.kid != null);
+
+            return null;
+        }
     }
 
     public boolean delete(String key) {
-        int keyHashValue = calculateHashValue(key, table.length);
-        
-        // if the key is not stored, return false
-        if(table[keyHashValue] == null) {
-            // System.out.println("Deletion failed");
-            return false; // TODO: fix this so the tests pass
-            
+        // otherwise, delete it and update the number of occupied slots
+        KVP toBeDeleted = search(key);
+
+        if(toBeDeleted == null) {
+            return false;
         }
 
-        // otherwise, delete it and update the number of occupied slots
-        table[keyHashValue] = null;
-        UNAVAILABLE_SLOTS--;
+        if(toBeDeleted.parent == toBeDeleted) {
+            UNAVAILABLE_SLOTS--;
+        }
+
+        toBeDeleted.parent.kid = toBeDeleted.kid;
+        toBeDeleted.kid.parent = toBeDeleted.parent;
+        toBeDeleted = null;
+
+        System.out.println(key + " deleted!");
 
         float loadFactor = calculateLoadFactor();
-        // System.out.println("---------------------------------------");
-        // System.out.println("Occupied slots: " + UNAVAILABLE_SLOTS);
-        // System.out.println("Load factor: " + loadFactor);
-        // System.out.println("---------------------------------------");
 
         if(loadFactor < LOAD_FACTOR_THRESHOLD_LOWER_BOUND && table.length/2 >= originalSize) {
-            // System.out.println(" ====================================== ");
-            // System.out.print("Decreasing from " + table.length + " to ");
             resize(Resize.DECREASE);
-            // System.out.println(table.length);
-            // System.out.println("Occupied slots: " + UNAVAILABLE_SLOTS);
-            // System.out.println(" ====================================== ");
         }
 
-        // System.out.println("Deletion succeded");
         return true;
     }
 
@@ -111,7 +128,8 @@ public class HashTable {
         // no need to copy the null entries :)
         for(KVP p: table) {
             if(p != null) {
-                int newHashValue = calculateHashValue(p.getKey(), newTable.length);
+                // TODO: update this
+                int newHashValue = calculateHashValue(p.KEY, newTable.length);
                 newTable[newHashValue] = p; 
             }
         }
@@ -136,11 +154,28 @@ public class HashTable {
     }
 
     public void printAllPairs() {
-        for(KVP p: table) {
-            if(p != null){
-                System.out.println("Key: " + p.getKey() + ", value: " + p.getValue());
+        System.out.println("< =========================================== >");
+
+        for(int i = 0; i < table.length; i++) {
+            System.out.print(i + ". ");
+
+            if(table[i] == null){
+                System.out.println("EMPTY SLOT");
+            }
+            else {
+                KVP slot = table[i];
+                do {
+                    System.out.print(slot.getKey());
+                    slot = slot.kid;
+
+                    if(slot != null){
+                        System.out.print(" -> ");
+                    }
+                } while(slot != null);
+                System.out.println();
             }
         }
+        System.out.println("< =========================================== >");
     }
 
 }

@@ -19,15 +19,23 @@ public class App {
         HashTable sut = new HashTable();
         int price = 5;
 
-        // for(String s: reader.getData()) {
-        //     sut.insert(s, price++);
-        // }
-
-        for(int i=0; i < 10; i++) {
-            sut.insert(reader.getData().get(0), price++);
+        for(String s: reader.getData()) {
+            sut.insert(s, price++);
         }
 
+        // for(int i=0; i < 10; i++) {
+        //     sut.insert(reader.getData().get(0), price++);
+        // }
+
         sut.printAllPairs();
+
+        for(String s: reader.getData()) {
+            System.out.println("Deleting " + s);
+            sut.delete(s);
+            sut.printAllPairs();
+        }
+
+        // sut.printAllPairs();
 
     }
 }

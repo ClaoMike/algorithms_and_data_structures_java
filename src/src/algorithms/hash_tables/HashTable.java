@@ -1,6 +1,7 @@
 package hash_tables;
 
 public class HashTable {
+
     public class KVP {
         String KEY;
         Integer VALUE;
@@ -32,7 +33,6 @@ public class HashTable {
     private int UNAVAILABLE_SLOTS = 0;
 
     private KVP[] table;
-    //TODO: do not allow for duplicates!
 
     public HashTable() {
         table = new KVP[originalSize]; // all entries are null
@@ -40,9 +40,12 @@ public class HashTable {
 
     public boolean insert(String key, Integer value) {
         KVP alreadyHere = search(key);
+
         if(alreadyHere != null) {
             return false;
         }
+
+        UNAVAILABLE_SLOTS++;
 
         float loadFactor = calculateLoadFactor();
 
@@ -55,18 +58,19 @@ public class HashTable {
         int hashValue = calculateHashValue(key, table.length);
 
         if(table[hashValue] != null) {
-            // System.out.println("collision");
             KVP lastLink = table[hashValue];
+
             while (lastLink.kid != null) {
                 lastLink = lastLink.kid;
             }
+
             lastLink.kid = newPair;
             newPair.parent = lastLink;
         }
         else {
             newPair.parent = newPair;
             table[hashValue] = newPair;
-            UNAVAILABLE_SLOTS++;
+            // UNAVAILABLE_SLOTS++;
         }
 
         return true;
@@ -83,13 +87,16 @@ public class HashTable {
         // otherwise, it's there, return the pair
         else {
             KVP lastLink = table[searchIndex];
+
             do {
+
                 if(lastLink.KEY.equals(key)) {
                     return lastLink;
                 } 
                 else {
                     lastLink = lastLink.kid;
                 }
+
             } while(lastLink != null);
 
             return null;
@@ -104,9 +111,15 @@ public class HashTable {
             return false;
         }
 
+        UNAVAILABLE_SLOTS--;
+
         if(toBeDeleted.parent == toBeDeleted) {
-            UNAVAILABLE_SLOTS--;
-            table[calculateHashValue(key, table.length)] = toBeDeleted.kid;
+            int hashValue = calculateHashValue(key, table.length);
+            table[hashValue] = toBeDeleted.kid;
+            
+            if(table[hashValue] != null) {
+                table[hashValue].parent = table[hashValue];
+            }
         }
         else {
             toBeDeleted.parent.kid = toBeDeleted.kid;
@@ -115,8 +128,6 @@ public class HashTable {
                 toBeDeleted.kid.parent = toBeDeleted.parent;
             }
         }
-
-        System.out.println(key + " deleted!");
 
         float loadFactor = calculateLoadFactor();
 
@@ -140,15 +151,18 @@ public class HashTable {
         for(KVP entry: table) {
             if(entry != null) {
                 KVP current = entry;
+
                 while (current != null) {
                     KVP copy = new KVP(current.KEY, current.VALUE);
                     int newHashValue = calculateHashValue(copy.KEY, newTable.length);
 
                     if(newTable[newHashValue] != null) {
                         KVP lastLink = newTable[newHashValue];
+
                         while (lastLink.kid != null) {
                             lastLink = lastLink.kid;
                         }
+
                         lastLink.kid = copy;
                         copy.parent = lastLink;
                     }
@@ -164,12 +178,12 @@ public class HashTable {
 
         table = newTable;
 
-        UNAVAILABLE_SLOTS = 0;
-        for(KVP entry: table) {
-            if(entry != null){
-                UNAVAILABLE_SLOTS++;
-            }
-        }
+        // UNAVAILABLE_SLOTS = 0;
+        // for(KVP entry: table) {
+        //     if(entry != null){
+        //         UNAVAILABLE_SLOTS++;
+        //     }
+        // }
     }
 
     private float calculateLoadFactor() {
@@ -199,6 +213,7 @@ public class HashTable {
             }
             else {
                 KVP slot = table[i];
+
                 do {
                     System.out.print(slot.getKey());
                     slot = slot.kid;
@@ -206,6 +221,7 @@ public class HashTable {
                     if(slot != null){
                         System.out.print(" -> ");
                     }
+
                 } while(slot != null);
                 System.out.println();
             }

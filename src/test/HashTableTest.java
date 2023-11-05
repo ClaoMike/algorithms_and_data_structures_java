@@ -28,9 +28,6 @@ public class HashTableTest {
 
     @After
     public void teardown() {
-        // for(String s: data) {
-        //     sut.delete(s);
-        // }
         sut = new HashTable();
     }
     

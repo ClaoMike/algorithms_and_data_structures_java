@@ -13,7 +13,7 @@ public class LargestPrimeFactor {
                 biggestFactor++;
             }
 
-            if(isPrime(biggestFactor)){
+            if(Prime.isPrime(biggestFactor)){
                 biggestPrimeFactor = biggestFactor;
                 System.out.println(biggestPrimeFactor);
             }
@@ -22,11 +22,4 @@ public class LargestPrimeFactor {
         return biggestPrimeFactor;
     }
 
-    private static boolean isPrime(long n) {
-        for(long i=2; i<=Math.sqrt(n); i++)
-            if(n%i==0)
-                return false;
-
-        return true;
-    }
 }

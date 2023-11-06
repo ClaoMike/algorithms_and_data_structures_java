@@ -1,0 +1,82 @@
+{
+    "nodes" : [
+        {
+            "node" : "Chitila", 
+            "edges" : [
+                {"node" : "Herastrau"},
+                {"node" : "Grivita"}
+            ]
+        },
+        {
+            "node" : "Herastrau", 
+            "edges" : [
+                {"node" : "Piata Victoriei"}
+            ]
+        },
+        {
+            "node" : "Colentina", 
+            "edges" : [
+                {"node" : "Herastrau"}
+            ]
+        },
+        {
+            "node" : "Grivita", 
+            "edges" : [
+                {"node" : "Gara de Nord"}
+            ]
+        },
+        {
+            "node" : "Gara de Nord", 
+            "edges" : [
+                {"node" : "Piata Victoriei"},
+                {"node" : "Piata Romana"}
+            ]
+        },
+        {   
+            "node" : "Piata Victoriei", 
+            "edges" : [
+                {"node" : "Iancului"},
+                {"node" : "Piata Romana"}
+            ]
+        },
+        {
+            "node" : "Iancului", 
+            "edges" : [
+                {"node" : "Colentina"},
+                {"node" : "Piata Universitatii"}
+            ]
+        },
+        {
+            "node" : "Parcul Izvor", 
+            "edges" : [
+                {"node" : "Gara de Nord"}
+            ]
+        },
+        {
+            "node" : "Piata Romana", 
+            "edges" : [
+                {"node" : "Parcul Izvor"},
+                {"node" : "Piata Universitatii"}
+            ]
+        },
+        {
+            "node" : "Piata Universitatii", 
+            "edges" : [
+                {"node" : "Unirii"}
+            ]
+        },
+        {
+            "node" : "Piata Constitutiei", 
+            "edges" : [
+                {"node" : "Parcul Izvor"}
+            ]
+        },
+        {
+            "node" : "Unirii", 
+            "edges" : [
+                {"node" : "Piata Constitutiei"},
+                {"node" : "Parcul Izvor"}
+            ]
+        }
+    ]
+}

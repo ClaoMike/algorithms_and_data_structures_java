@@ -26,7 +26,7 @@ public class App {
         // ProjectEulerShowcase.smallestMultipleOfYwenty();
         // ProjectEulerShowcase.sumSquareDifference();
         
-        
+        System.out.println(Prime.theNthPrimeNumber(10001));
 
         // System.out.println();
     }

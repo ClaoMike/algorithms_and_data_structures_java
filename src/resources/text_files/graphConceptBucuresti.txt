@@ -1,0 +1,70 @@
+Undirected graph example
+==============================================================
+Chitila ------------------ Herastrau ----- Colentina
+   |                            |              |
+   |                            |              |
+Grivita - Gara de Nord - Piata Victoriei - Iancului
+                |     \         |              |
+                |      \        |              |
+                |       \       |              |
+                |        \      |              |
+                |         \     |              |
+        Parcul Izvor - Piata Romana - Piata Universitatii
+                |\                      /
+                | \                    /
+                |  \                  /
+                |   \                /
+                |    \              /
+                |     \            /
+                |      \          /
+                |       \        /   
+                |        \      /
+                |         \    /
+                |          \  /
+                |           \/
+     Piata Constitutiei -- Unirii
+
+Directed graph example
+==============================================================
+Chitila -----------------> Herastrau <---- Colentina
+   |                            |              ?
+   ?                            ?              |
+Grivita > Gara de Nord > Piata Victoriei > Iancului
+                ?     \         |              |
+                |      \        |              |
+                |       \       |              |
+                |        \      |              |
+                |         ?     ?              ?
+        Parcul Izvor < Piata Romana > Piata Universitatii
+                ??                      /
+                | \                    /
+                |  \                  /
+                |   \                /
+                |    \              /
+                |     \            /
+                |      \          /
+                |       \        /   
+                |        \      /
+                |         \    /
+                |          \  /
+                |           \?
+     Piata Constitutiei <- Unirii
+
+Legend
+=================
+<, >, ? - arrows
+
+Connections
+===================================================
+Chitila --> Herastrau, Grivita
+Herastrau --> Piata Victoriei
+Colentina --> Herastrau
+Grivita --> Gara de Nord
+Gara de Nord --> Piata Victoriei, Piata Romana
+Piata Victoriei --> Iancului, Piata Romana
+Iancului --> Colentina, Piata Universitatii
+Parcul Izvor --> Gara de Nord
+Piata Romana --> Parcul Izvor, Piata Universitatii
+Piata Universitatii --> Unirii
+Piata Constitutiei --> Parcul Izvor
+Unirii --> Piata Constitutiei, Parcul Izvor

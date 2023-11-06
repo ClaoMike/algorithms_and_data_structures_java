@@ -24,6 +24,9 @@ public class App {
         // ProjectEulerShowcase.largestPrimeFactorOfThisNBelowInTheImplementation();
         // ProjectEulerShowcase.largestPalindromeProductOfThreeDigitsNumbers();
         // ProjectEulerShowcase.smallestMultipleOfYwenty();
+        // ProjectEulerShowcase.sumSquareDifference();
+        
+        
 
         // System.out.println();
     }

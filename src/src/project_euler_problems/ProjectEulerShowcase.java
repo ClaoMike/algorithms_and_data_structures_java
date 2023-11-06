@@ -20,4 +20,8 @@ public class ProjectEulerShowcase {
         System.out.println(SmallestMultiple.upTo(20));
     }
 
+    public static void sumSquareDifference() {
+        System.out.println(SumSquareDifference.differenceBetweenTheSumOfTheSquaresAndTheSquareOfTheSumOfFirstNNaturalNumbers(100));
+    }
+
 }

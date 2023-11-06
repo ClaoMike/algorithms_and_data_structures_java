@@ -1,9 +1,6 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import hash_tables.HashTable;
-import hash_tables.HashTable.KVP;
-
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -45,7 +42,7 @@ public class HashTableTest {
     @Test
     public void testHashTableSearch() {
         String item = "Surinam cherry";
-        KVP pair = sut.search(item);
+        HashTable.KVP pair = sut.search(item);
 
         assertEquals(item, pair.getKey());
         assertEquals(141, pair.getValue().intValue());

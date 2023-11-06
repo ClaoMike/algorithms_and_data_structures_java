@@ -3,7 +3,9 @@
         "src",
         "test",
         "src/algorithms",
-        "src/project_euler_problems"
+        "src/project_euler_problems",
+        "src/data_strucutres",
+        "src/data_strucutres/hash_tables"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [

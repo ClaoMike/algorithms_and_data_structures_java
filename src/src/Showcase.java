@@ -1,9 +1,6 @@
 import java.lang.Integer;
 import java.util.ArrayList;
 
-import hash_tables.HashTable;
-import hash_tables.HashTable.KVP;
-
 public class Showcase {
     private static int size = 89;
     private static int min = -100;
@@ -142,7 +139,7 @@ public class Showcase {
         int price = 5;
         String fruit = "Papaya";
         String fakeFruit = "This is not a fruit";
-        KVP item;
+        HashTable.KVP item;
 
         System.out.println("--> Populating the hash table");
         for(String s: fruits) {

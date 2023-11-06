@@ -1,4 +1,3 @@
-package hash_tables;
 public class HashFunctions {
     
     public static int polynomialRolling(String s) {

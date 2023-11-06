@@ -1,5 +1,3 @@
-package hash_tables;
-
 public class HashTable {
     
     // object to hold a key value pair, can also be used to create a linked list

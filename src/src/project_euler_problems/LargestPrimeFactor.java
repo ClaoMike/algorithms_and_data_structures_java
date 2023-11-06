@@ -1,5 +1,3 @@
-package project_euler_problems;
-
 import java.lang.Math; 
 
 public class LargestPrimeFactor {

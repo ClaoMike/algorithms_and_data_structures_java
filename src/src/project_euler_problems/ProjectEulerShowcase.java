@@ -1,5 +1,3 @@
-package project_euler_problems;
-
 public class ProjectEulerShowcase {
 
     public static void multipliesOfThreeOrFiveBelowOneThousand() {
@@ -16,6 +14,10 @@ public class ProjectEulerShowcase {
 
     public static void largestPalindromeProductOfThreeDigitsNumbers() {
         System.out.println(LargestPalindromeProduct.largestPalindromeMadeFromTheProductOfTwoNDigitNumbers(3));
+    }
+
+    public static void smallestMultipleOfYwenty() {
+        System.out.println(SmallestMultiple.upTo(20));
     }
 
 }

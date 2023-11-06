@@ -1,5 +1,3 @@
-package project_euler_problems;
-
 public class EvenFibonacciNumbers {
 
     public static long sumEvenValuedTermsThatDoNotExceed(long n) {

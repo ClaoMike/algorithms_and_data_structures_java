@@ -2,7 +2,8 @@
     "java.project.sourcePaths": [
         "src",
         "test",
-        "src/algorithms"
+        "src/algorithms",
+        "src/project_euler_problems"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [

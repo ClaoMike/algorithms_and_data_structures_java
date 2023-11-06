@@ -1,22 +1,24 @@
-package project_euler_problems;
-
 public class SmallestMultiple {
     
-    public static void upTo(int n) {
-        int[] previousList = new int[n];
-        int[] newList;
+    public static long upTo(int n) {
+        long[] initialList = new long[n];
+        long[] newList;
 
         for(int i = 0; i<n; i++){
             initialList[i] = i+1;
         }
 
-        for(int i = 1; i<=n; i++){
-            newList = new int[n-i];
-            for(int j = 0; j<previousList.length-1; j++) {
-                // TODO
+        for(int i = 0; i<n-1; i++){
+            newList = new long[n-i-1];
+
+            for(int j = 0; j<initialList.length-1; j++) {
+                long GCD = Euclid.recursive(initialList[j], initialList[j+1]);
+                long LCM = (initialList[j]*initialList[j+1])/GCD;
+                newList[j] = LCM;
             }
+            initialList = newList;
         }
 
-        System.out.println();
+        return initialList[0];
     }
 }

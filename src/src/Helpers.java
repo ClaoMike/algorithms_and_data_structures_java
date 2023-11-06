@@ -14,6 +14,17 @@ public class Helpers {
         System.out.println(" <<");
     }
 
+    public static void printArray(long[] array) {
+        System.out.println();
+        System.out.print("Array >> ");
+        for(int i=0; i<array.length-1; i++){
+            System.out.print(array[i]);
+            System.out.print(", ");
+        }
+        System.out.print(array[array.length-1]);
+        System.out.println(" <<");
+    }
+
     public static int pickRandomElementFromArray(int[] array) {
         int random = new Random().nextInt(array.length);
 

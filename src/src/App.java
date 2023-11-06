@@ -1,7 +1,3 @@
-import project_euler_problems.LargestPalindromeProduct;
-import project_euler_problems.ProjectEulerShowcase;
-import project_euler_problems.SmallestMultiple;
-
 public class App {
     public static void main(String[] args) throws Exception {
         Helpers.clearConsole();
@@ -27,8 +23,8 @@ public class App {
         // ProjectEulerShowcase.sumOfEvenFibonacciElementsBelowFourMillion();
         // ProjectEulerShowcase.largestPrimeFactorOfThisNBelowInTheImplementation();
         // ProjectEulerShowcase.largestPalindromeProductOfThreeDigitsNumbers();
-        SmallestMultiple.smallestMultiple();
-        
+        // ProjectEulerShowcase.smallestMultipleOfYwenty();
+
         // System.out.println();
     }
 }

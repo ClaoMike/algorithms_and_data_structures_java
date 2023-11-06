@@ -1,4 +1,3 @@
-package project_euler_problems;
 public class MultiplesOfThreeOrFive {
     
     public static int sumOfAllMultipliesBelow(int n) {

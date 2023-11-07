@@ -1,51 +1,48 @@
-import java.io.FileReader; 
-import java.util.Iterator; 
-import java.util.Map; 
+import java.io.FileReader;
+import java.util.ArrayList;
   
 import org.json.simple.JSONArray; 
 import org.json.simple.JSONObject; 
-import org.json.simple.parser.*; 
+import org.json.simple.parser.*;
 
 public class JSONDirectedGraphFileReader {
+    final String nodesAsString = "nodes";
+    final String nodeAsString = "node";
+    final String edgesAsString = "edges";
+
+    DirectedGraph g;
 
     public JSONDirectedGraphFileReader(String JSONFilePath) throws Exception {
+        g = new DirectedGraph();
+
         Object theFullJSONFile = new JSONParser().parse(new FileReader(JSONFilePath)); 
-          
         JSONObject theFullJSONFileAsAJSONObject = (JSONObject) theFullJSONFile;
+        JSONArray nodesArray = (JSONArray) theFullJSONFileAsAJSONObject.get(nodesAsString);
 
-        JSONArray nodesArray = (JSONArray) theFullJSONFileAsAJSONObject.get("nodes");
-        System.out.println(nodesArray.get(0));
-        
-        JSONObject entry1 = (JSONObject) nodesArray.get(0);
-        String parentNode1Value = (String) entry1.get("node");
-        System.out.println(parentNode1Value);
+        for(Object o: nodesArray) {
+            JSONObject entry = (JSONObject) o;  
+            String node = (String) entry.get(nodeAsString);
+            
+            System.out.println("--> " + node);
 
-        JSONArray edgesArray = (JSONArray) entry1.get("edges");
+            JSONArray edges = (JSONArray) entry.get(edgesAsString);
+            ArrayList<String> kids = new ArrayList<>();
 
-        JSONObject node1 = (JSONObject) edgesArray.get(0);
-        String edge1 = (String) node1.get("node");
-        System.out.println(edge1);
+            for(Object e: edges) {
+                JSONObject kidJSON = (JSONObject) e;
+                String kid = (String) kidJSON.get(nodeAsString);
+            
+                System.out.println(kid);
+                kids.add(kid);
+            }
 
-        JSONObject node2 = (JSONObject) edgesArray.get(1);
-        String edge2 = (String) node2.get("node");
-        System.out.println(edge2);
-        // System.out.println(edgesArray.get(0));
-        
-
-        // Iterator itr2 = nodesArray.iterator(); 
-          
-        // while (itr2.hasNext())  
-        // { 
-        //     Iterator<Map.Entry> itr1 = ((Map) itr2.next()).entrySet().iterator(); 
-        //     while (itr1.hasNext()) { 
-        //         Map.Entry pair = itr1.next(); 
-        //         System.out.println(pair.getKey() + " : " + pair.getValue());
-
-        //         JSONParser parser = new JSONParser();  
-        //         JSONObject json = (JSONObject) parser.parse(pair.getValue());  
-        //     } 
-        // } 
-    
+            DirectedGraphNode n = new DirectedGraphNode(node, kids);
+            g.addNode(n);
+        }
     }
+
+    public DirectedGraph getGraph() {
+            return g;
+        }
     
 }

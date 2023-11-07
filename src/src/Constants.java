@@ -1,3 +1,4 @@
 public class Constants {
-    final static public String fruitsFilePath = "/Users/claomike/Desktop/Projects/algorithms_and_data_structures_java/src/resources/text_files/fruits.txt";
+    final static public String fruitsFilePath = "resources/text_files/fruits.txt";
+    final static public String directedGraphBucurestiJSONFilePath = "resources/text_files/directedGraphBucuresti.JSON";
 }

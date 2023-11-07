@@ -8,9 +8,10 @@ import org.json.simple.parser.*;
 
 public class JSONFileReader {
 
-    public JSONFileReader() throws Exception {
-        Object obj = new JSONParser().parse(new FileReader("JSONExample.json"));
+    public JSONFileReader(String JSONFilePath) throws Exception {
+        Object obj = new JSONParser().parse(new FileReader(JSONFilePath));
         JSONObject jo = (JSONObject) obj;
+        JSONArray ja = (JSONArray) jo.get("nodes"); 
     }
     
 }

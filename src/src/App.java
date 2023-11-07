@@ -27,7 +27,7 @@ public class App {
         // ProjectEulerShowcase.sumSquareDifference();
         // ProjectEulerShowcase.the10001PrimeNumber();
 
-        JSONFileReader reader = new JSONFileReader();
+        JSONFileReader reader = new JSONFileReader(Constants.directedGraphBucurestiJSONFilePath);
 
         // System.out.println();
     }

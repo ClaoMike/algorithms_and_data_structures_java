@@ -25,8 +25,9 @@ public class App {
         // ProjectEulerShowcase.largestPalindromeProductOfThreeDigitsNumbers();
         // ProjectEulerShowcase.smallestMultipleOfYwenty();
         // ProjectEulerShowcase.sumSquareDifference();
-        
-        System.out.println(Prime.theNthPrimeNumber(10001));
+        // ProjectEulerShowcase.the10001PrimeNumber();
+
+        JSONFileReader reader = new JSONFileReader();
 
         // System.out.println();
     }

@@ -24,4 +24,8 @@ public class ProjectEulerShowcase {
         System.out.println(SumSquareDifference.differenceBetweenTheSumOfTheSquaresAndTheSquareOfTheSumOfFirstNNaturalNumbers(100));
     }
 
+    public static void the10001PrimeNumber() {
+        System.out.println(Prime.theNthPrimeNumber(10001));
+    }
+
 }

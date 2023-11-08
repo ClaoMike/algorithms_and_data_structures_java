@@ -2,6 +2,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+////////////////////////////////////////////////////////////////////
+// Breadth-first Search pseudocode                                //
+////////////////////////////////////////////////////////////////////
+// BFS(G, root)                                                   //
+//     let Q be a queue                                           //
+//     mark root as visited                                       //
+//     Q.enqueue(root)                                            //
+//                                                                //
+//     while Q is not empty do                                    //
+//         v := Q.dequeue()                                       //
+//                                                                //
+//         if v is the goal then                                  //      
+//             return v                                           //
+//                                                                //
+//             for all edges from v to w in G.adjacentEdges(v) do //
+//                 if w is not marked as visited then             //
+//                     mark w as visited                          //
+//                     w.parent := v                              //
+//                     Q.enqueue(w)                               //
+////////////////////////////////////////////////////////////////////
+
 public class BreadthFirstSearch {
     final private HashMap<String, ArrayList<String>> graph;
     private Queue<String> queue;
@@ -9,7 +30,7 @@ public class BreadthFirstSearch {
     private Queue<ArrayList<String>> pathQueue;
     private ArrayList<String> path;
     private ArrayList<ArrayList<String>> paths;
-    
+
     public BreadthFirstSearch(HashMap<String, ArrayList<String>> graph) {
         this.graph = graph;
     }

@@ -27,7 +27,13 @@ public class App {
         // ProjectEulerShowcase.sumSquareDifference();
         // ProjectEulerShowcase.the10001PrimeNumber();
 
+        String source = "Chitila";
+        String target = "Parcul Izvor";
+
         JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
-        reader.printGraph();
+        BreadthFirstSearch BFS = new BreadthFirstSearch(reader.getGraph());
+        System.out.println(BFS.isThereAPathBetween(source, target));
+        System.out.println(BFS.getPathBetween(source, target));
+        System.out.println(BFS.getAllPathsFrom(source));
     }
 }

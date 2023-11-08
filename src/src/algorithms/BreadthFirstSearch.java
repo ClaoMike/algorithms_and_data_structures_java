@@ -25,6 +25,7 @@ import java.util.HashSet;
 
 public class BreadthFirstSearch {
     final private HashMap<String, ArrayList<String>> graph;
+    
     private Queue<String> queue;
     private HashSet<String> visited;
     private Queue<ArrayList<String>> pathQueue;

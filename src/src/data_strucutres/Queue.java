@@ -19,4 +19,8 @@ public class Queue<T> {
         return queue.get(0);
     }
 
+    public boolean isEmpty() {
+        return (queue.size() == 0) ? true : false;
+    }
+
 }

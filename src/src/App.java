@@ -28,7 +28,6 @@ public class App {
         // ProjectEulerShowcase.the10001PrimeNumber();
 
         JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
-
-        // System.out.println();
+        reader.printGraph();
     }
 }

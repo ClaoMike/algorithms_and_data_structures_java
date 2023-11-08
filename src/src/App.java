@@ -35,5 +35,6 @@ public class App {
         System.out.println(BFS.isThereAPathBetween(source, target));
         System.out.println(BFS.getPathBetween(source, target));
         System.out.println(BFS.getAllPathsFrom(source));
+
     }
 }

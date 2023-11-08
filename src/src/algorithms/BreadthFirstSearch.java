@@ -4,32 +4,26 @@ import java.util.HashSet;
 
 public class BreadthFirstSearch {
     final private HashMap<String, ArrayList<String>> graph;
-    Queue<String> queue = new Queue<>();
-    HashSet<String> visited = new HashSet<>();
+    private Queue<String> queue;
+    private HashSet<String> visited;
+    private Queue<ArrayList<String>> pathQueue;
+    private ArrayList<String> path;
+    private ArrayList<ArrayList<String>> paths;
     
     public BreadthFirstSearch(HashMap<String, ArrayList<String>> graph) {
         this.graph = graph;
     }
 
     public boolean isThereAPathBetween(String source, String target) {
-        Queue<String> queue = new Queue<>();
-        HashSet<String> visited = new HashSet<>();
-
-        queue.enqueue(source);
-        visited.add(source);
+        initQueueAndVisited(source);
 
         while(!queue.isEmpty()){
             String v = queue.dequeue();
-
-            if(Integer.toHexString(v.hashCode()).equals(Integer.toHexString(target.hashCode())))
+            
+            if(equals(v, target))
                 return true;
 
-            for(String kid: graph.get(v)) {
-                if(!visited.contains(kid)) {
-                    visited.add(kid);
-                    queue.enqueue(kid);
-                }
-            }
+            processKidsOf(v, KidsProcessingMethodWhenRequestingPath.NO_PATH);
 
         }
 
@@ -37,37 +31,16 @@ public class BreadthFirstSearch {
     }
 
     public ArrayList<String> getPathBetween(String source, String target) {
-        Queue<String> queue = new Queue<>();
-        HashSet<String> visited = new HashSet<>();
-
-        Queue<ArrayList<String>> pathQueue = new Queue<>();
-
-        queue.enqueue(source);
-        visited.add(source);
-
-        ArrayList<String> path = new ArrayList<>();
-        path.add(source);
-        pathQueue.enqueue(path);
+        initQueueVisitedPathQueueAndArray(source);
 
         while(!queue.isEmpty()){
             String v = queue.dequeue();
             path = pathQueue.dequeue();
 
-            if(Integer.toHexString(v.hashCode()).equals(Integer.toHexString(target.hashCode()))) {
+            if(equals(v, target))
                 return path;
-            }
-            
 
-            for(String kid: graph.get(v)) {
-                if(!visited.contains(kid)) {
-                    visited.add(kid);
-                    queue.enqueue(kid);
-
-                    ArrayList<String> newPath = new ArrayList<>(path);
-                    newPath.add(kid);
-                    pathQueue.enqueue(newPath);
-                }
-            }
+            processKidsOf(v, KidsProcessingMethodWhenRequestingPath.ONE_PATH);
 
         }
 
@@ -75,38 +48,89 @@ public class BreadthFirstSearch {
     }
 
     public ArrayList<ArrayList<String>> getAllPathsFrom(String source) {
-        Queue<String> queue = new Queue<>();
-        HashSet<String> visited = new HashSet<>();
-
-        Queue<ArrayList<String>> pathQueue = new Queue<>();
-        ArrayList<ArrayList<String>> paths = new ArrayList<>();
-
-        queue.enqueue(source);
-        visited.add(source);
-
-        ArrayList<String> path = new ArrayList<>();
-        path.add(source);
-        pathQueue.enqueue(path);
+        initQueueVisitedPathQueueAndArray(source);
+        paths = new ArrayList<>();
 
         while(!queue.isEmpty()){
             String v = queue.dequeue();
             path = pathQueue.dequeue();
 
-            for(String kid: graph.get(v)) {
-                if(!visited.contains(kid)) {
-                    visited.add(kid);
-                    queue.enqueue(kid);
-
-                    ArrayList<String> newPath = new ArrayList<>(path);
-                    newPath.add(kid);
-                    pathQueue.enqueue(newPath);
-                    paths.add(newPath);
-                }
-            }
+            processKidsOf(v, KidsProcessingMethodWhenRequestingPath.ALL_PATHS);
 
         }
 
         return paths;
+    }
+
+    private ArrayList<String> createNewPathWithTarget(String target) {
+        ArrayList<String> newPath = new ArrayList<>(path);
+        newPath.add(target);
+
+        return newPath;
+    }
+
+    private void initQueueAndVisited(String source) {
+        queue = new Queue<>();
+        visited = new HashSet<>();
+
+        queue.enqueue(source);
+        visited.add(source);
+    }
+
+    private void initQueueVisitedPathQueueAndArray(String source) {
+        cleanInternalVariables();
+        initQueueAndVisited(source);
+    
+        pathQueue = new Queue<>();
+
+        initPathArray(source);
+    }
+
+    private boolean equals(String str1, String str2) {
+        return (Integer.toHexString(str1.hashCode()).equals(Integer.toHexString(str2.hashCode()))) ? true : false;
+    }
+
+    private void initPathArray(String source) {
+        path = new ArrayList<>();
+        path.add(source);
+        pathQueue.enqueue(path);
+    }
+
+    private void visitAndEnqueueNode(String node) {
+        visited.add(node);
+        queue.enqueue(node);
+    }
+
+    enum KidsProcessingMethodWhenRequestingPath {
+        NO_PATH,
+        ONE_PATH,
+        ALL_PATHS
+    }
+
+    private void processKidsOf(String v, KidsProcessingMethodWhenRequestingPath method) {
+        graph.get(v).forEach((kid) -> {
+                if(!visited.contains(kid)) {
+                    visitAndEnqueueNode(kid);
+
+                    if(method == KidsProcessingMethodWhenRequestingPath.ALL_PATHS || method == KidsProcessingMethodWhenRequestingPath.ONE_PATH) {
+                        ArrayList<String> newPath = createNewPathWithTarget(kid);
+                        pathQueue.enqueue(newPath);
+
+                        if(method == KidsProcessingMethodWhenRequestingPath.ALL_PATHS) {
+                            paths.add(newPath);
+                        }
+                    }
+
+                }
+            });
+    }
+
+    private void cleanInternalVariables() {
+        queue = null;
+        visited  = null;
+        pathQueue = null;
+        path = null;
+        paths = null;
     }
 
 }

@@ -10,7 +10,7 @@ public class Stack<T> {
         stack.add(item);
     }
 
-    public T dequeue() {
+    public T pop() {
         return stack.remove(stack.size()-1);
     }
 
@@ -24,5 +24,9 @@ public class Stack<T> {
 
     public int getSize() {
         return stack.size();
+    }
+
+    public ArrayList<T> asArrayList() {
+        return new ArrayList<>(stack);
     }
 }

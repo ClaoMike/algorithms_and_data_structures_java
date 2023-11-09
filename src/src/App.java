@@ -29,10 +29,9 @@ public class App {
 
         String source = "Chitila";
         String target = "Parcul Izvor";
-
-        System.out.println("->> BFS");
         JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
-
+        
+        // System.out.println("->> BFS");
         // BreadthFirstSearch BFS = new BreadthFirstSearch(reader.getGraph());
         // System.out.println(BFS.isThereAPathBetween(source, target));
         // System.out.println(BFS.getPathBetween(source, target));
@@ -41,7 +40,7 @@ public class App {
         System.out.println("->> DFS");
         DepthFirstSearch DFS = new DepthFirstSearch(reader.getGraph());
         System.out.println(DFS.isThereAPathBetween(source, target));
-
+        System.out.println(DFS.getShortestPathBetween(source, target));
 
     }
 }

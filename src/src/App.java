@@ -40,6 +40,7 @@ public class App {
         System.out.println("->> DFS");
         DepthFirstSearch DFS = new DepthFirstSearch(reader.getGraph());
         System.out.println(DFS.isThereAPathBetween(source, target));
+        System.out.println(DFS.getAllPathsBetween(source, target));
         System.out.println(DFS.getShortestPathBetween(source, target));
 
     }

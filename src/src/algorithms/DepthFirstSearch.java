@@ -38,35 +38,23 @@ public class DepthFirstSearch {
 
         while (!stack.isEmpty()) {
             String v = stack.pop();
-            
-            System.out.println("--------------------------------------");
-            System.out.println("->> Node removed from stack: " + v);
 
             if(equals(v, target))
                 return true;
 
             if(!visited.contains(v)){
                 visited.add(v);
-
-                System.out.print("->> Kids that are being added to the stack: ");
                 
                 graph.get(v).forEach((kid) -> {
                     stack.push(kid);
-
-                    System.out.print(kid + " ");
-                
                 });
-
-                System.out.println();
-                System.out.println("Current stack: " + stack.asArrayList());
-                System.out.println("--------------------------------------");
             }
         }
 
         return false;
     }
 
-    public ArrayList<String> getShortestPathBetween(String source, String target) {
+    public ArrayList<ArrayList<String>> getAllPathsBetween(String source, String target) {
         ArrayList<String> path = new ArrayList<>();
         ArrayList<ArrayList<String>> paths = new ArrayList<>();
         HashMap<String, ArrayList<String>> visitedEdges = copyGraph(graph);
@@ -89,10 +77,15 @@ public class DepthFirstSearch {
                 paths.add(newPath);
 
                 String last = v;
+                boolean nextInStackIsKidOfLast;
+                boolean alreadyVisitedEdgeBetweenLastAndNextInStack;
                 do {
                     path.remove(last);
                     last = path.get(path.size()-1);
-                }while(!graph.get(last).contains(stack.top()) || (graph.get(last).contains(stack.top()) && visitedEdges.get(last).contains(stack.top())) );
+
+                    nextInStackIsKidOfLast = graph.get(last).contains(stack.top());
+                    alreadyVisitedEdgeBetweenLastAndNextInStack = visitedEdges.get(last).contains(stack.top());
+                } while(!nextInStackIsKidOfLast || (nextInStackIsKidOfLast && alreadyVisitedEdgeBetweenLastAndNextInStack));
 
                 continue;
             }
@@ -106,17 +99,22 @@ public class DepthFirstSearch {
             }
         }
 
+        return paths;
+    }
+
+    public ArrayList<String> getShortestPathBetween(String source, String target) {
+        ArrayList<ArrayList<String>> allPaths = getAllPathsBetween(source, target);
+
         int shortesPathIndex = 0;
-        int shortestPathSize = paths.get(shortesPathIndex).size();
-        for(int i=0; i< paths.size(); i++){
-            if(paths.get(i).size() < shortestPathSize) {
-                shortestPathSize = paths.get(i).size();
+        int shortestPathSize = allPaths.get(shortesPathIndex).size();
+        for(int i=0; i< allPaths.size(); i++){
+            if(allPaths.get(i).size() < shortestPathSize) {
+                shortestPathSize = allPaths.get(i).size();
                 shortesPathIndex = i;
             }
         }
 
-        return paths.get(shortesPathIndex);
-            
+        return allPaths.get(shortesPathIndex);
     }
 
     private HashMap<String, ArrayList<String>> copyGraph(HashMap<String, ArrayList<String>> g) {

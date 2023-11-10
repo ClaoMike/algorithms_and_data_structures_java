@@ -15,8 +15,12 @@ public class App {
         // Showcase.sumArrayRecursive();
         // Showcase.maxArrayRecursive();
         // Showcase.hashTable();
-        Showcase.BFS();
-        Showcase.DFS();
+        // Showcase.BFS();
+        // Showcase.DFS();
+
+        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphTasksJSONFilePath);
+        TopologySort ts = new TopologySort(reader.getGraph());
+        System.out.println(ts.getTopologicalSort());
 
         /////////////////////////////////////////////////
         // Project Euler - first 100 problems are allowed to be on a public repo

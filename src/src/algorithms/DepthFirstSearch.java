@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 //////////////////////////////////////////////////////////////////////////////
 // Depth-first Search iterative implementation pseudocode                   //
@@ -15,10 +18,6 @@
 //             for all edges from v to w in G.adjacentEdges(v) do           //
 //                 S.push(w)                                                //
 //////////////////////////////////////////////////////////////////////////////
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class DepthFirstSearch {
     final private HashMap<String, ArrayList<String>> graph;

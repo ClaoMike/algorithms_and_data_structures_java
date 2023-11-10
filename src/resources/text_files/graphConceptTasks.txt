@@ -1,0 +1,47 @@
+Directed graph example
+==============================================================
+Turn computer on -> Turn computer off <----------------------------------
+        |\                                                              |
+        | \                                                             |
+        |  \                                                            |
+        |   \                                                           |
+        |    \                                                          |
+        |     \                                                         |
+        |      \                                                        |
+        |       \                                                       |
+        |        \                                                      |
+        |         \                                                     |
+        |          \                                                    |
+        |           \                                                   |
+        |            \                                                  |
+        |             ?                                                 |
+        |       Turn internet on --------------------------------------?|
+        |            |         \                \                       |
+        |            |          \                \                      |
+        |            ?           ?                ?                     |
+        |        Watch YouTube <- Push commit ->  Play online games     |
+        |       /         |        to GitHub          /       |         |
+        |      /          |          /   |           /        |         |
+        |     /           |_________/____|__________/_________|________?|
+        |    /                     /               /                    |
+        |   /                     /               /                     |
+        |  /                     /               /                      |
+        | /                     /               /                       |
+        ??                     ?               ?                        |
+Play offline games <---------------------------                         |
+        |                                                               |
+        |_______________________________________________________________|
+
+Legend
+=================
+<, >, ? - arrows
+
+Connections
+===================================================
+Turn computer on --> Turn computer off, Turn internet on, Play offline games
+Turn computer off --> 
+Turn internet on --> Turn computer off, Watch YouTube, Push commit to GitHub, Play online games
+Watch YouTube --> Play offline games, Turn computer off
+Push commit to GitHub --> Watch YouTube, Play online games, Turn computer off, Play offline games
+Play online games --> Play offline games, Turn computer off
+Play offline games --> Turn computer off

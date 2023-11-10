@@ -17,10 +17,7 @@ public class App {
         // Showcase.hashTable();
         // Showcase.BFS();
         // Showcase.DFS();
-
-        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphTasksJSONFilePath);
-        TopologySort ts = new TopologySort(reader.getGraph());
-        System.out.println(ts.getTopologicalSort());
+        Showcase.topologySort();
 
         /////////////////////////////////////////////////
         // Project Euler - first 100 problems are allowed to be on a public repo

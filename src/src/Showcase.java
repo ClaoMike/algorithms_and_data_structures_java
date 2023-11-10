@@ -242,4 +242,19 @@ public class Showcase {
         System.out.println();
     }
 
+    public static void topologySort() throws Exception {
+        System.out.println("Topology Sort ->>");
+        System.out.println();
+
+        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphTasksJSONFilePath);
+        TopologySort ts = new TopologySort(reader.getGraph());
+
+        System.out.println("A possible topological sort of this graph is: ");
+        System.out.println(ts.getTopologicalSort());
+        System.out.println();
+
+        System.out.println("<<-");
+        System.out.println();
+    }
+
 }

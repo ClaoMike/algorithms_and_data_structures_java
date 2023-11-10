@@ -1,0 +1,54 @@
+{
+    "nodes" : [
+        {
+            "node" : "Turn computer on", 
+            "edges" : [
+                {"node" : "Turn computer off"},
+                {"node" : "Turn internet on"},
+                {"node" : "Play offline games"}
+            ]
+        },
+        {
+            "node" : "Turn computer off", 
+            "edges" : []
+        },
+        {
+            "node" : "Turn internet on", 
+            "edges" : [
+                {"node" : "Turn computer off"},
+                {"node" : "Watch YouTube"},
+                {"node" : "Push commit to GitHub"},
+                {"node" : "Play online games"}
+            ]
+        },
+        {
+            "node" : "Watch YouTube", 
+            "edges" : [
+                {"node" : "Play offline games"},
+                {"node" : "Turn computer off"}
+            ]
+        },
+        {
+            "node" : "Push commit to GitHub", 
+            "edges" : [
+                {"node" : "Watch YouTube"},
+                {"node" : "Play online games"},
+                {"node" : "Turn computer off"},
+                {"node" : "Play offline games"}
+            ]
+        },
+        {   
+            "node" : "Play online games", 
+            "edges" : [
+                {"node" : "Play offline games"},
+                {"node" : "Turn computer off"}
+            ]
+        },
+        {
+            "node" : "Play offline games", 
+            "edges" : [
+                {"node" : "Turn computer off"}
+            ]
+        }
+    ]
+}

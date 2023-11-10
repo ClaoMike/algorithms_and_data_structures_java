@@ -38,10 +38,10 @@ Legend
 
 Connections
 ===================================================
-Turn computer on --> Turn computer off, Turn internet on, Play offline games
-Turn computer off --> 
-Turn internet on --> Turn computer off, Watch YouTube, Push commit to GitHub, Play online games
-Watch YouTube --> Play offline games, Turn computer off
-Push commit to GitHub --> Watch YouTube, Play online games, Turn computer off, Play offline games
-Play online games --> Play offline games, Turn computer off
-Play offline games --> Turn computer off
+1. Turn computer on --> Turn computer off, Turn internet on, Play offline games
+2. Turn computer off --> EMPTY
+3. Turn internet on --> Turn computer off, Watch YouTube, Push commit to GitHub, Play online games
+4. Watch YouTube --> Play offline games, Turn computer off
+5. Push commit to GitHub --> Watch YouTube, Play online games, Turn computer off, Play offline games
+6. Play online games --> Play offline games, Turn computer off
+7. Play offline games --> Turn computer off

@@ -56,15 +56,15 @@ Legend
 
 Connections
 ===================================================
-Chitila --> Herastrau, Grivita
-Herastrau --> Piata Victoriei
-Colentina --> Herastrau
-Grivita --> Gara de Nord
-Gara de Nord --> Piata Victoriei, Piata Romana
-Piata Victoriei --> Iancului, Piata Romana
-Iancului --> Colentina, Piata Universitatii
-Parcul Izvor --> Gara de Nord
-Piata Romana --> Parcul Izvor, Piata Universitatii
-Piata Universitatii --> Unirii
-Piata Constitutiei --> Parcul Izvor
-Unirii --> Piata Constitutiei, Parcul Izvor
+01. Chitila --> Herastrau, Grivita
+02. Herastrau --> Piata Victoriei
+03. Colentina --> Herastrau
+04. Grivita --> Gara de Nord
+05. Gara de Nord --> Piata Victoriei, Piata Romana
+06. Piata Victoriei --> Iancului, Piata Romana
+07. Iancului --> Colentina, Piata Universitatii
+08. Parcul Izvor --> Gara de Nord
+09. Piata Romana --> Parcul Izvor, Piata Universitatii
+10. Piata Universitatii --> Unirii
+11. Piata Constitutiei --> Parcul Izvor
+12. Unirii --> Piata Constitutiei, Parcul Izvor

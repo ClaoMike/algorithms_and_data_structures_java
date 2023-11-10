@@ -15,9 +15,11 @@ public class App {
         // Showcase.sumArrayRecursive();
         // Showcase.maxArrayRecursive();
         // Showcase.hashTable();
+        Showcase.BFS();
+        Showcase.DFS();
 
         /////////////////////////////////////////////////
-        // Project Euler
+        // Project Euler - first 100 problems are allowed to be on a public repo
         /////////////////////////////////////////////////
         // ProjectEulerShowcase.multipliesOfThreeOrFiveBelowOneThousand();
         // ProjectEulerShowcase.sumOfEvenFibonacciElementsBelowFourMillion();
@@ -26,22 +28,5 @@ public class App {
         // ProjectEulerShowcase.smallestMultipleOfYwenty();
         // ProjectEulerShowcase.sumSquareDifference();
         // ProjectEulerShowcase.the10001PrimeNumber();
-
-        String source = "Chitila";
-        String target = "Parcul Izvor";
-        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
-        
-        // System.out.println("->> BFS");
-        // BreadthFirstSearch BFS = new BreadthFirstSearch(reader.getGraph());
-        // System.out.println(BFS.isThereAPathBetween(source, target));
-        // System.out.println(BFS.getPathBetween(source, target));
-        // System.out.println(BFS.getAllPathsFrom(source));
-
-        System.out.println("->> DFS");
-        DepthFirstSearch DFS = new DepthFirstSearch(reader.getGraph());
-        System.out.println(DFS.isThereAPathBetween(source, target));
-        System.out.println(DFS.getAllPathsBetween(source, target));
-        System.out.println(DFS.getShortestPathBetween(source, target));
-
     }
 }

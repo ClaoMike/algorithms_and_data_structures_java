@@ -186,4 +186,60 @@ public class Showcase {
         table.printAllPairs(true);
     }
 
+    public static void BFS() throws Exception {
+        String source = "Chitila";
+        String target = "Parcul Izvor";
+        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
+
+        System.out.println("BFS ->>");
+        System.out.println();
+        BreadthFirstSearch BFS = new BreadthFirstSearch(reader.getGraph());
+
+        System.out.println("Is there a path between " + source + " and " + target + "?");
+        System.out.println(BFS.isThereAPathBetween(source, target));
+        System.out.println();
+
+        System.out.println("The shortest path between " + source + " and " + target + " is:");
+        System.out.println(BFS.getPathBetween(source, target));
+        System.out.println();
+
+        System.out.println("All the paths from the source node: " + source + " are: ");
+        ArrayList<ArrayList<String>> results = BFS.getAllPathsFrom(source);
+        for(int i=0; i<results.size(); i++) {
+            System.out.println(i + ". " + results.get(i));
+        }
+        System.out.println();
+
+        System.out.println("<<-");
+        System.out.println();
+    }
+
+    public static void DFS() throws Exception {
+        String source = "Chitila";
+        String target = "Parcul Izvor";
+        JSONDirectedGraphFileReader reader = new JSONDirectedGraphFileReader(Constants.directedGraphBucurestiJSONFilePath);
+
+        System.out.println("DFS ->>");
+        System.out.println();
+        DepthFirstSearch DFS = new DepthFirstSearch(reader.getGraph());
+        
+        System.out.println("Is there a path between " + source + " and " + target + "?");
+        System.out.println(DFS.isThereAPathBetween(source, target));
+        System.out.println();
+        
+        System.out.println("All the paths between " + source + " and " + target + " are: ");
+        ArrayList<ArrayList<String>> results = DFS.getAllPathsBetween(source, target);
+        for(int i=0; i<results.size(); i++) {
+            System.out.println(i + ". " + results.get(i));
+        }
+        System.out.println();
+
+        System.out.println("The shortest path between " + source + " and " + target + " is:");
+        System.out.println(DFS.getShortestPathBetween(source, target));
+        System.out.println();
+
+        System.out.println("<<-");
+        System.out.println();
+    }
+
 }

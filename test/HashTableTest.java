@@ -9,8 +9,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class HashTableTest {
-    final String path = "/Users/claomike/Desktop/Projects/algorithms_and_data_structures_java/src/resources/text_files/fruits.txt";
-    final TextFileReader reader = new TextFileReader(path);
+    final TextFileReader reader = new TextFileReader(Constants.fruitsFilePath);
     final ArrayList<String> data = reader.getData();
     
     int price = 5;

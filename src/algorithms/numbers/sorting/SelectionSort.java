@@ -1,18 +1,17 @@
 import java.util.ArrayList;
 
-public class SelectionSort {
-
-    public static int[] selectionSort(int[] array) {
-        ArrayList<Integer> arrayList = Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(array);
+public class SelectionSort implements Sortable {
+    
+    public ArrayList<Integer> sort(ArrayList<Integer> array) {
         ArrayList<Integer> newArrayList = new ArrayList<Integer>();
 
-        for (int i=0; i<array.length; i++) {
-            Integer smallestIndex = findSmallest(arrayList);
-            newArrayList.add(arrayList.get(smallestIndex));
-            arrayList.remove(smallestIndex.intValue());
+        for (int i=0; i<array.size(); i++) {
+            Integer smallestIndex = findSmallest(array);
+            newArrayList.add(array.get(smallestIndex));
+            array.remove(smallestIndex.intValue());
           }
 
-        return Helpers.convertArrayListToArrayOfInt(newArrayList);
+        return newArrayList;
     }
 
     private static Integer findSmallest(ArrayList<Integer> array){

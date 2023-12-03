@@ -4,7 +4,13 @@
         "src/algorithms",
         "src/data_structures",
         "src/data_structures/hash_tables",
-        "test"
+        "test",
+        "src/algorithms/numbers",
+        "src/algorithms/numbers/sorting",
+        "test/algorithms",
+        "test/data_structures",
+        "test/algorithms/numbers",
+        "test/algorithms/numbers/sorting"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [

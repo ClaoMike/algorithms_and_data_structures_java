@@ -1,6 +1,11 @@
+package algorithms.numbers.sorting;
 import static org.junit.Assert.assertArrayEquals;
 import java.util.Arrays;
 import org.junit.Test;
+
+import Generator;
+import Helpers;
+import MergeSort;
 
 public class MergeSortTest {
 

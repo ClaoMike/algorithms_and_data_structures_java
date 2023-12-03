@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class MergeSort {
-    public static ArrayList<Integer> mergeSort(ArrayList<Integer> array) {
+public class MergeSort implements Sortable {
+    public ArrayList<Integer> sort(ArrayList<Integer> array) {
         if(array.size() <= 1) {
             return array;
         }
@@ -13,8 +13,8 @@ public class MergeSort {
         half1.addAll(array.subList(0, array.size()/2));
         half2.addAll(array.subList(array.size()/2, array.size()));
 
-        half1 = mergeSort(half1);
-        half2 = mergeSort(half2);
+        half1 = sort(half1);
+        half2 = sort(half2);
 
         return merge(half1, half2);
     }

@@ -1,0 +1,13 @@
+{
+    "java.project.sourcePaths": [
+        "src",
+        "src/algorithms",
+        "src/data_structures",
+        "src/data_structures/hash_tables",
+        "test"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+}

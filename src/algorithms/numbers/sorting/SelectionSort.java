@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SelectionSort implements Sortable {
+public class SelectionSort implements SortableInterface {
     
     public ArrayList<Integer> sort(ArrayList<Integer> array) {
         ArrayList<Integer> newArrayList = new ArrayList<Integer>();

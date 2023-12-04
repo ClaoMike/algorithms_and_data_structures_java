@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MergeSortTest implements SortableTestInterface {
+public class SortTest {
 
     public ArrayList<Integer> array;
     public ArrayList<Integer> expectedResult;
@@ -17,7 +17,9 @@ public class MergeSortTest implements SortableTestInterface {
         expectedResult = new ArrayList<>();
     }
 
-    private void setUpArray(ArrayList<Integer> arr, int... args) {
+    protected void setUpArray(ArrayList<Integer> arr, int... args) {
+        arr = new ArrayList<>();
+        
         for (int arg : args) {
             arr.add(arg);
         }
@@ -27,6 +29,8 @@ public class MergeSortTest implements SortableTestInterface {
     @Test
     public void testSortingOnAEmptyList(){
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // A single element list
@@ -36,6 +40,8 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(expectedResult, 89);
 
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // A list with all zeros
@@ -44,7 +50,10 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(array, 0, 0, 0, 0, 0, 0);
         setUpArray(expectedResult, 0, 0, 0, 0, 0, 0);
 
+       
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // An ordered list
@@ -54,6 +63,8 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(expectedResult, 1, 2 , 3, 4, 5);
 
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // A reversed list
@@ -63,6 +74,8 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(expectedResult, 1, 2 , 3, 4, 5);
 
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // A list of all the same elements
@@ -72,6 +85,8 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(expectedResult, 5, 5, 5, 5, 5, 5);
 
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
 
     // A very large list
@@ -87,6 +102,8 @@ public class MergeSortTest implements SortableTestInterface {
         setUpArray(expectedResult, list);
 
         assertEquals(expectedResult, Sort.merge(array));
+        assertEquals(expectedResult, Sort.quick(array));
+        assertEquals(expectedResult, Sort.selelction(array));
     }
     
 }

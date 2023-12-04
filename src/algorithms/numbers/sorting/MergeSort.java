@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class MergeSort implements Sortable {
+public class MergeSort implements SortableInterface {
+    
     public ArrayList<Integer> sort(ArrayList<Integer> array) {
         if(array.size() <= 1) {
             return array;

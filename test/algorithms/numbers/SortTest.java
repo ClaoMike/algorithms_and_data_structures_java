@@ -2,7 +2,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,8 +17,6 @@ public class SortTest {
     }
 
     protected void setUpArray(ArrayList<Integer> arr, int... args) {
-        arr = new ArrayList<>();
-        
         for (int arg : args) {
             arr.add(arg);
         }
@@ -30,7 +27,7 @@ public class SortTest {
     public void testSortingOnAEmptyList(){
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // A single element list
@@ -41,7 +38,7 @@ public class SortTest {
 
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // A list with all zeros
@@ -50,10 +47,10 @@ public class SortTest {
         setUpArray(array, 0, 0, 0, 0, 0, 0);
         setUpArray(expectedResult, 0, 0, 0, 0, 0, 0);
 
-       
+
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // An ordered list
@@ -64,7 +61,7 @@ public class SortTest {
 
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // A reversed list
@@ -75,7 +72,7 @@ public class SortTest {
 
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // A list of all the same elements
@@ -86,7 +83,7 @@ public class SortTest {
 
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
 
     // A very large list
@@ -103,7 +100,7 @@ public class SortTest {
 
         assertEquals(expectedResult, Sort.merge(array));
         assertEquals(expectedResult, Sort.quick(array));
-        assertEquals(expectedResult, Sort.selelction(array));
+        assertEquals(expectedResult, Sort.selection(array));
     }
     
 }

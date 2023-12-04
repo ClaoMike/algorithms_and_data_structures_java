@@ -2,16 +2,14 @@ import java.util.ArrayList;
 
 public class CountElementsOfAnArrayRecursive {
     
-    public static int count(int[] array) {
-        ArrayList<Integer> arrayList = Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(array);
-
-        if(array.length == 0) {
+    public static int count(ArrayList<Integer> array) {
+        if(array.size() == 0) {
             return 0;
         }
 
-        arrayList.remove(0);
+        array.remove(0);
 
-        return 1 + count(Helpers.convertArrayListToArrayOfInt(arrayList));
+        return 1 + count(array);
     }
 
 }

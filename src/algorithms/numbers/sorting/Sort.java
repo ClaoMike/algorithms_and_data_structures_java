@@ -10,7 +10,8 @@ public class Sort {
         return new QuickSort().sort(array);
     }
 
-    static public ArrayList<Integer> selelction(ArrayList<Integer> array){
+    static public ArrayList<Integer> selection(ArrayList<Integer> array){
         return new SelectionSort().sort(array);
     }
+    
 }

@@ -1,5 +1,5 @@
 import java.util.ArrayList;
 
-interface Sortable {
+public interface SortableInterface {
     public ArrayList<Integer> sort(ArrayList<Integer> array);
 }

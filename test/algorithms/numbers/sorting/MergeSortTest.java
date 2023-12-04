@@ -1,78 +1,77 @@
-package algorithms.numbers.sorting;
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import Generator;
-import Helpers;
-import MergeSort;
+public class MergeSortTest implements SortableTestInterface {
 
-public class MergeSortTest {
+    public ArrayList<Integer> array;
+    public ArrayList<Integer> expectedResult;
+
+    @Before
+    public void init() {
+        array = new ArrayList<>();
+        expectedResult = new ArrayList<>();
+    }
+
+    private void setUpArray(ArrayList<Integer> arr, int... args) {
+        for (int arg : args) {
+            arr.add(arg);
+        }
+    }
 
     // An empty list
     @Test
     public void testSortingOnAEmptyList(){
-        int[] emptyList = {};
-
-        int[] expectedResult = emptyList;
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(emptyList)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // A single element list
     @Test
     public void testSortingOnAOneElementList(){
-        int[] list = {89};
+        setUpArray(array, 89);
+        setUpArray(expectedResult, 89);
 
-        int[] expectedResult = list;
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // A list with all zeros
     @Test
     public void testSortingOnAListFilledWithZeroes(){
-        int[] list = {0, 0, 0, 0, 0, 0};
+        setUpArray(array, 0, 0, 0, 0, 0, 0);
+        setUpArray(expectedResult, 0, 0, 0, 0, 0, 0);
 
-        int[] expectedResult = list;
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // An ordered list
     @Test
     public void testSortingOnASortedList(){
-        int[] list = {1, 2 , 3, 4, 5};
+        setUpArray(array, 1, 2 , 3, 4, 5);
+        setUpArray(expectedResult, 1, 2 , 3, 4, 5);
 
-        int[] expectedResult = list;
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // A reversed list
     @Test
     public void testSortingOnAReversedSortedList(){
-        int[] list = {5, 4, 3, 2, 1};
+        setUpArray(array, 5, 4, 3, 2, 1);
+        setUpArray(expectedResult, 1, 2 , 3, 4, 5);
 
-        int[] expectedResult = {1, 2 , 3, 4, 5};
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // A list of all the same elements
     @Test
     public void testSortingOnASameElementSortedList(){
-        int[] list = {5, 5, 5, 5, 5, 5};
+        setUpArray(array, 5, 5, 5, 5, 5, 5);
+        setUpArray(expectedResult, 5, 5, 5, 5, 5, 5);
 
-        int[] expectedResult = list;
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
 
     // A very large list
@@ -82,13 +81,12 @@ public class MergeSortTest {
         Generator g = new Generator();
 
         int[] list = g.generateArrayWithRandomIntegers(size);
+        setUpArray(array, list);
+        
+        Arrays.sort(list);
+        setUpArray(expectedResult, list);
 
-        int[] expectedResult = Arrays.copyOf(list, list.length);
-        Arrays.sort(expectedResult);
-
-        int[] actualResult = Helpers.convertArrayListToArrayOfInt(MergeSort.mergeSort(Helpers.convertArrayOfPrimitiveIntToArrayListOfIntegers(list)));
-    
-        assertArrayEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, Sort.merge(array));
     }
     
 }

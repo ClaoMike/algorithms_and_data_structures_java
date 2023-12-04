@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-public class SelectionSortTest {
+public class SelectionSortTest implements SortableTestInterface{
 
     // An empty list
     @Test
